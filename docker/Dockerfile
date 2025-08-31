@@ -57,7 +57,7 @@ RUN conda install -c conda-forge libstdcxx-ng -y
 
 RUN apt install -y python3.10-venv python3.10-distutils python3.10-dev build-essential cmake
 RUN python3.10 -m venv venv310
-RUN source venv310/bin/activate
+RUN venv310/bin/pip install --upgrade pip setuptools wheel
 
 RUN pip install --upgrade pip setuptools wheel
 

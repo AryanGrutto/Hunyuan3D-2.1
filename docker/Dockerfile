@@ -55,14 +55,20 @@ RUN conda install cuda -c nvidia/label/cuda-12.4.1 -y
 # Update libstdcxx-ng to fix compatibility issues (auto-confirm)
 RUN conda install -c conda-forge libstdcxx-ng -y
 
+RUN apt install -y python3.10-venv python3.10-distutils python3.10-dev build-essential cmake
+RUN python3.10 -m venv venv310
+RUN source venv310/bin/activate
+
 RUN pip install --upgrade pip setuptools wheel
+
+RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 
 # RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118
 
 RUN pip install bpy==4.0 --extra-index-url https://download.blender.org/pypi/
 
 # Clone Hunyuan3D-2.1 repository
-RUN git clone https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1.git
+RUN git clone https://github.com/ynaka1988/Hunyuan3D-2.1.git
 
 # Install Python dependencies from modified requirements.txt
 RUN pip install -r Hunyuan3D-2.1/requirements.txt
@@ -74,8 +80,12 @@ RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/custom_rasterizer && \
     pip install --no-build-isolation .
 
 # Install DifferentiableRenderer
-RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer && \
+RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer &&  
+    python3 hy3dpaint/DifferentiableRenderer/setup.py build_ext --inplace && \
     bash compile_mesh_painter.sh
+
+RUN wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P hy3dpaint/ckpt
+
 
 # Create ckpt folder in hy3dpaint and download RealESRGAN model
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint && \

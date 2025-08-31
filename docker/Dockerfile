@@ -80,7 +80,7 @@ RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/custom_rasterizer && \
     pip install --no-build-isolation .
 
 # Install DifferentiableRenderer
-RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer &&  
+RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer && \
     python3 hy3dpaint/DifferentiableRenderer/setup.py build_ext --inplace && \
     bash compile_mesh_painter.sh
 

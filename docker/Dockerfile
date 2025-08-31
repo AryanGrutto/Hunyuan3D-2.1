@@ -81,6 +81,7 @@ RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/custom_rasterizer && \
 
 # Install DifferentiableRenderer
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint && \
+    mkdir -p hy3dpaint/DifferentiableRenderer && \
     python3 DifferentiableRenderer/setup.py build_ext --inplace && \
     bash DifferentiableRenderer/compile_mesh_painter.sh
 

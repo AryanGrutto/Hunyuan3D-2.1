@@ -81,7 +81,7 @@ RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/custom_rasterizer && \
 
 # Install DifferentiableRenderer
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer && \
-    python3 hy3dpaint/DifferentiableRenderer/setup.py build_ext --inplace && \
+    python3 setup.py build_ext --inplace && \
     bash compile_mesh_painter.sh
 
 RUN wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P hy3dpaint/ckpt

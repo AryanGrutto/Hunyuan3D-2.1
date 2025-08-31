@@ -71,7 +71,7 @@ RUN pip install -r Hunyuan3D-2.1/requirements.txt
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/custom_rasterizer && \
     export TORCH_CUDA_ARCH_LIST="6.0;6.1;7.0;7.5;8.0;8.6;8.9;9.0" && \
     export CUDA_NVCC_FLAGS="-allow-unsupported-compiler" && \
-    pip install -e .
+    pip install --no-build-isolation .
 
 # Install DifferentiableRenderer
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer && \

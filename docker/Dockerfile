@@ -68,7 +68,7 @@ RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url h
 RUN pip install bpy==4.0 --extra-index-url https://download.blender.org/pypi/
 
 # Clone Hunyuan3D-2.1 repository
-RUN git clone https://github.com/ynaka1988/Hunyuan3D-2.1.git
+RUN git clone https://github.com/AryanGrutto/Hunyuan3D-2.1.git
 
 # Install Python dependencies from modified requirements.txt
 RUN pip install -r Hunyuan3D-2.1/requirements.txt

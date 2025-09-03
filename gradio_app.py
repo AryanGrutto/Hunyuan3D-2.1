@@ -458,7 +458,7 @@ def build_app():
     if 'mini' in args.subfolder:
         title = 'Hunyuan3D-2mini: Strong 0.6B Image to Shape Generator'
 
-    title = 'Hunyuan-3D-2.1'
+    title = 'AAAAAHunyuan-3D-2.1'
         
     if TURBO_MODE:
         title = title.replace(':', '-Turbo: Fast ')
@@ -469,7 +469,7 @@ def build_app():
     {title}
     </div>
     <div align="center">
-    Tencent Hunyuan3D Team
+    AAAAATencent Hunyuan3D Team
     </div>
     """
     custom_css = """
